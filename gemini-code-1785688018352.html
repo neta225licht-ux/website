@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נטע | סושיאל לכלות</title>
+    <style>
+        /* הוספת גלילה חלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FDFBF7;
+            color: #4A3B32;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #E3D5CA;
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            /* כדי לוודא שהתוכן לא יחרוג מהמסך */
+            box-sizing: border-box; 
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.8em;
+            color: #5C4033;
+        }
+        h2 {
+            font-weight: normal;
+            font-size: 1.3em;
+            color: #705446;
+            margin-top: 15px;
+        }
+        /* עיצוב הכפתור החדש של הזמינות */
+        .top-nav-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #FDFBF7;
+            color: #5C4033;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid #5C4033;
+            transition: all 0.3s;
+        }
+        .top-nav-btn:hover {
+            background-color: #5C4033;
+            color: #FDFBF7;
+        }
+        .container {
+            max-width: 1000px; 
+            width: 90%;
+            margin: -30px auto 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(92, 64, 51, 0.05);
+            box-sizing: border-box;
+        }
+        .availability-badge {
+            background-color: #F5EBE0;
+            color: #5C4033;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            border: 1px dashed #E3D5CA;
+            /* מרווח קטן מלמעלה כדי שהגלילה תעצור במקום יפה */
+            scroll-margin-top: 20px; 
+        }
+        .about-section {
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        .packages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .package-card {
+            background-color: #FDFBF7;
+            border: 2px solid #F5EBE0;
+            border-radius: 15px;
+            padding: 25px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(92, 64, 51, 0.1);
+            border-color: #E3D5CA;
+        }
+        .price {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #8B5A2B;
+            margin: 20px 0;
+            background-color: #F5EBE0;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 35px;
+            background-color: #8B5A2B;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .contact-btn:hover {
+            background-color: #5C4033;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>נטע - סושיאל לכלות</h1>
+        <h2>הזיכרונות הכי יפים מהיום המאושר בחייך, ישר לסטורי</h2>
+        <!-- הכפתור החדש שמפנה לזמינות -->
+        <a href="#availability-section" class="top-nav-btn">לבדוק זמינות ביומן ↓</a>
+    </header>
+
+    <div class="container">
+        
+        <!-- הוספתי id כדי שהכפתור יידע לאן לגלוש -->
+        <div id="availability-section" class="availability-badge">
+            📌 זמינות: יומן 2026 פתוח | שירות באזור תל אביב והמרכז
+        </div>
+
+        <div class="about-section">
+            <h3 style="color: #5C4033; font-size: 1.5em;">קצת עליי</h3>
+            <p>
+                היי, אני נטע. כמנהלת סושיאל מדיה וראש צוות, אני כאן כדי לדאוג שאת תשחררי, תנשמי ותהני מכל רגע ביום המיוחד שלך, בזמן שאני אתעד את כל הקסם. אני מביאה איתי עין אסתטית, סגנון מודרני ויכולת לתפוס את הרגעים הכי אותנטיים ומרגשים.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; color: #5C4033; font-size: 1.5em; margin-bottom: 25px;">החבילות שלי</h3>
+        
+        <div class="packages">
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">חבילת בייסיק</h4>
+                <p>תיעוד של הרגעים המרכזיים במהלך ההתארגנות והחופה. צילום תמונות אווירה וסרטונים אותנטיים מהרגעים החשובים.</p>
+                <div class="price">1,000 ₪</div>
+            </div>
+            
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">החבילה המורחבת</h4>
+                <p>תיעוד נרחב הכולל את ההתארגנות, המפגש, החופה ותחילת הריקודים. כולל יצירת סרטוני היילייטס קצרים לאינסטגרם.</p>
+                <div class="price">1,800 ₪</div>
+            </div>
+
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">חבילת פרימיום</h4>
+                <p>ליווי אישי ומלא לכל אורך היום, מההתארגנות ועד סוף המסיבה. ניהול תוכן צמוד, רילסים מעוצבים ועריכה מודרנית.</p>
+                <div class="price">2,500 ₪</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="contact-btn">לתיאום פגישה ופרטים נוספים</a>
+        </div>
+    </div>
+</body>
+</html>

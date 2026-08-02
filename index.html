@@ -1,952 +1,187 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LICHT.MEDIA | החתונה שלכם בכל מקום בכל זמן</title>
-  <meta name="description" content="החתונה שלכם בכל מקום בכל זמן. ניהול סושיאל, סרטוני לייב ועריכה קצבית לכלות מאת LICHT.MEDIA.">
-  
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="LICHT.MEDIA | החתונה שלכם בכל מקום בכל זמן">
-  <meta property="og:description" content="החתונה שלכם בכל מקום בכל זמן. ניהול סושיאל, סרטוני לייב ועריכה קצבית.">
-  <meta property="og:image" content="https://example.com/og-image.jpg"> <!-- TODO: להחליף בנתיב תמונה אמיתית -->
-  <meta property="og:url" content="https://example.com"> <!-- TODO: להחליף בכתובת האתר האמיתית -->
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Rubik:wght@600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    /* CSS Variables - Modern Premium Studio */
-    :root {
-      --bg-main: #FBF9F5;
-      --bg-card: #FFFFFF;
-      --bg-dark: #122219;
-      --text-main: #1C1917;
-      --text-muted: #57534E;
-      --text-light: #FBF9F5;
-      --accent: #234735; /* Deep Olive Sage */
-      --accent-gold: #C29B38; /* Warm Gold */
-      --accent-hover: #173124;
-      --border: #E7E5E4;
-      --border-dark: #2A4234;
-      --font-body: 'Assistant', system-ui, -apple-system, sans-serif;
-      --font-heading: 'Rubik', system-ui, sans-serif;
-    }
-
-    /* Reset & Base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.6;
-    }
-
-    body {
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
-
-    /* Grain Texture */
-    .grain-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1160px;
-      margin-inline: auto;
-      padding-inline: 1.5rem;
-    }
-
-    /* Typography */
-    .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      font-weight: 800;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--text-main);
-      line-height: 1.1;
-    }
-
-    .hero-title {
-      font-size: clamp(2.75rem, 6.5vw, 5.25rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title .highlight {
-      color: var(--accent);
-      background: linear-gradient(120deg, rgba(194, 155, 56, 0.15) 0%, rgba(35, 71, 53, 0.08) 100%);
-      padding-inline: 0.3rem;
-      border-radius: 4px;
-    }
-
-    /* Header */
-    header {
-      padding-block: 1.25rem;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(251, 249, 245, 0.92);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-weight: 900;
-      font-size: 1.4rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--accent);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.85rem 1.75rem;
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      color: var(--text-light);
-      box-shadow: 0 4px 14px rgba(35, 71, 53, 0.2);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background-color: var(--accent);
-      color: var(--text-light);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding-block: 4rem 4.5rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    @media (min-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1.15fr 0.85fr;
-      }
-    }
-
-    .hero-content p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 50ch;
-      font-weight: 500;
-      line-height: 1.65;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .stat-item .stat-num {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .stat-item .stat-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-top: 0.3rem;
-    }
-
-    /* Video Visual Card */
-    .hero-visual {
-      position: relative;
-    }
-
-    .video-card {
-      position: relative;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 0.85rem;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
-    }
-
-    .video-placeholder {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      max-height: 500px;
-      background-color: #E7E3DC;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      text-align: center;
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .video-placeholder video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .image-caption {
-      margin-top: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding-top: 0.6rem;
-    }
-
-    /* Section Component */
-    section {
-      padding-block: 5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-header {
-      margin-bottom: 3rem;
-    }
-
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-num {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      color: var(--accent-gold);
-      font-weight: 800;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background-color: var(--border);
-    }
-
-    .section-title {
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      font-weight: 900;
-    }
-
-    /* Availability Form Section */
-    .availability-section {
-      background-color: #F3EFE6;
-    }
-
-    .form-wrapper {
-      max-width: 720px;
-      margin-inline: auto;
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 3rem 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px -10px rgba(0,0,0,0.06);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    @media (min-width: 650px) {
-      .form-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .form-group.full-width {
-        grid-column: span 2;
-      }
-    }
-
-    .form-group {
-      text-align: start;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--text-main);
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 0.9rem 1.1rem;
-      background-color: var(--bg-main);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      color: var(--text-main);
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--accent);
-      background-color: #FFFFFF;
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .honeypot-field {
-      position: absolute;
-      inset-inline-start: -9999px;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .form-status {
-      margin-top: 1.25rem;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 1.1rem;
-      border-radius: 6px;
-      display: none;
-      text-align: center;
-    }
-
-    .form-status.success {
-      display: block;
-      background-color: #EAF3ED;
-      color: #173826;
-      border: 1px solid #B8D6C2;
-    }
-
-    .form-status.error {
-      display: block;
-      background-color: #FDF2F0;
-      color: #8C2A1C;
-      border: 1px solid #F3C7C2;
-    }
-
-    /* Packages Grid (Dark Pulse) */
-    .dark-pulse {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      border-top: none;
-    }
-
-    .dark-pulse .section-title,
-    .dark-pulse h2,
-    .dark-pulse h3 {
-      color: var(--text-light);
-    }
-
-    .dark-pulse .eyebrow {
-      color: var(--accent-gold);
-    }
-
-    .dark-pulse .section-line {
-      background-color: var(--border-dark);
-    }
-
-    .packages-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .packages-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .package-card {
-      background-color: #1A3125;
-      border: 1px solid var(--border-dark);
-      padding: 3rem 2rem;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .package-card.featured {
-      border: 2px solid var(--accent-gold);
-      background-color: #203C2D;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
-
-    .featured-badge {
-      position: absolute;
-      top: -14px;
-      inset-inline-start: 2rem;
-      background-color: var(--accent-gold);
-      color: #122219;
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 0.3rem 0.85rem;
-      border-radius: 4px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .package-name {
-      font-size: 1.65rem;
-      font-weight: 800;
-      margin-bottom: 0.4rem;
-    }
-
-    .package-price-tag {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      margin-bottom: 1.75rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-dark);
-    }
-
-    .package-features {
-      list-style: none;
-      margin-bottom: 2.25rem;
-      flex-grow: 1;
-    }
-
-    .package-features li {
-      font-size: 0.95rem;
-      margin-bottom: 0.85rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      color: #D6E0DA;
-    }
-
-    .package-features li::before {
-      content: "✓";
-      color: var(--accent-gold);
-      font-weight: bold;
-    }
-
-    /* Value Cards */
-    .value-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .value-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .value-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .value-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 2.25rem 1.75rem;
-      border-radius: 10px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .value-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 25px -5px rgba(0,0,0,0.06);
-      border-color: var(--accent-gold);
-    }
-
-    .value-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .value-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* Footer */
-    footer {
-      padding-block: 3.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      align-items: center;
-      text-align: center;
-    }
-
-    @media (min-width: 600px) {
-      .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: start;
-      }
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .footer-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    .colophon {
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2.5rem;
-      text-align: center;
-    }
-
-    /* Accessibility & Print */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      .value-card, .btn {
-        transition: none !important;
-      }
-    }
-
-    @media print {
-      header, footer, .btn, .form-wrapper {
-        display: none !important;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-    }
-  </style>
-
-  <!-- Person Schema JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "LICHT.MEDIA",
-    "jobTitle": "ניהול סושיאל ויוצרת תוכן לכלות בלייב",
-    "telephone": "+972527953630",
-    "url": "https://example.com", 
-    "sameAs": [
-      "https://www.instagram.com/licht.media", 
-      "https://wa.me/972527953630"
-    ]
-  }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נטע | סושיאל לכלות</title>
+    <style>
+        /* הוספת גלילה חלקה */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FDFBF7;
+            color: #4A3B32;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #E3D5CA;
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            /* כדי לוודא שהתוכן לא יחרוג מהמסך */
+            box-sizing: border-box; 
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.8em;
+            color: #5C4033;
+        }
+        h2 {
+            font-weight: normal;
+            font-size: 1.3em;
+            color: #705446;
+            margin-top: 15px;
+        }
+        /* עיצוב הכפתור החדש של הזמינות */
+        .top-nav-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background-color: #FDFBF7;
+            color: #5C4033;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 2px solid #5C4033;
+            transition: all 0.3s;
+        }
+        .top-nav-btn:hover {
+            background-color: #5C4033;
+            color: #FDFBF7;
+        }
+        .container {
+            max-width: 1000px; 
+            width: 90%;
+            margin: -30px auto 50px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(92, 64, 51, 0.05);
+            box-sizing: border-box;
+        }
+        .availability-badge {
+            background-color: #F5EBE0;
+            color: #5C4033;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            border: 1px dashed #E3D5CA;
+            /* מרווח קטן מלמעלה כדי שהגלילה תעצור במקום יפה */
+            scroll-margin-top: 20px; 
+        }
+        .about-section {
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        .packages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .package-card {
+            background-color: #FDFBF7;
+            border: 2px solid #F5EBE0;
+            border-radius: 15px;
+            padding: 25px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(92, 64, 51, 0.1);
+            border-color: #E3D5CA;
+        }
+        .price {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #8B5A2B;
+            margin: 20px 0;
+            background-color: #F5EBE0;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 10px;
+        }
+        .contact-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 35px;
+            background-color: #8B5A2B;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .contact-btn:hover {
+            background-color: #5C4033;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>נטע - סושיאל לכלות</h1>
+        <h2>הזיכרונות הכי יפים מהיום המאושר בחייך, ישר לסטורי</h2>
+        <!-- הכפתור החדש שמפנה לזמינות -->
+        <a href="#availability-section" class="top-nav-btn">לבדוק זמינות ביומן ↓</a>
+    </header>
 
-  <!-- Background Texture -->
-  <div class="grain-overlay" aria-hidden="true"></div>
+    <div class="container">
+        
+        <!-- הוספתי id כדי שהכפתור יידע לאן לגלוש -->
+        <div id="availability-section" class="availability-badge">
+            📌 זמינות: יומן 2026 פתוח | שירות באזור תל אביב והמרכז
+        </div>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <a href="#" class="logo" dir="ltr">LICHT.MEDIA</a>
-      <div class="nav-actions">
-        <a href="https://www.instagram.com" target="_blank" rel="noopener" class="btn btn-outline" dir="ltr">Instagram</a>
-        <a href="#availability" class="btn btn-primary">בדיקת זמינות</a>
-      </div>
+        <div class="about-section">
+            <h3 style="color: #5C4033; font-size: 1.5em;">קצת עליי</h3>
+            <p>
+                היי, אני נטע. כמנהלת סושיאל מדיה וראש צוות, אני כאן כדי לדאוג שאת תשחררי, תנשמי ותהני מכל רגע ביום המיוחד שלך, בזמן שאני אתעד את כל הקסם. אני מביאה איתי עין אסתטית, סגנון מודרני ויכולת לתפוס את הרגעים הכי אותנטיים ומרגשים.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; color: #5C4033; font-size: 1.5em; margin-bottom: 25px;">החבילות שלי</h3>
+        
+        <div class="packages">
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">חבילת בייסיק</h4>
+                <p>תיעוד של הרגעים המרכזיים במהלך ההתארגנות והחופה. צילום תמונות אווירה וסרטונים אותנטיים מהרגעים החשובים.</p>
+                <div class="price">1,000 ₪</div>
+            </div>
+            
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">החבילה המורחבת</h4>
+                <p>תיעוד נרחב הכולל את ההתארגנות, המפגש, החופה ותחילת הריקודים. כולל יצירת סרטוני היילייטס קצרים לאינסטגרם.</p>
+                <div class="price">1,800 ₪</div>
+            </div>
+
+            <div class="package-card">
+                <h4 style="color: #5C4033; font-size: 1.2em; margin-top: 0;">חבילת פרימיום</h4>
+                <p>ליווי אישי ומלא לכל אורך היום, מההתארגנות ועד סוף המסיבה. ניהול תוכן צמוד, רילסים מעוצבים ועריכה מודרנית.</p>
+                <div class="price">2,500 ₪</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="#" class="contact-btn">לתיאום פגישה ופרטים נוספים</a>
+        </div>
     </div>
-  </header>
-
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="eyebrow">סטודיו לסושיאל וסרטונים בלייב</span>
-          <h1 class="hero-title">
-            החתונה שלכם <br>
-            <span class="highlight">בכל מקום בכל זמן.</span>
-          </h1>
-          <p>
-            כל ה-Vibe, הטרנדים והאנרגיה המטורפת מהאירוע – מוסרטים בלייב ונערכים לרשת עוד לפני הבוקר שלמחרת.
-          </p>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#availability" class="btn btn-primary">בדיקת זמינות מיידית</a>
-            <a href="#packages" class="btn btn-outline">סגנונות וחבילות</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-num">100%</div>
-              <div class="stat-desc">אנרגיה ופוקוס בשיא</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">24h</div>
-              <div class="stat-desc">מקסימום לאספקת כל התוכן</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-num">4K</div>
-              <div class="stat-desc">איכות צילום ועריכה קצבית</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="video-card">
-            <div class="video-placeholder">
-              <!-- TODO: להחליף בנתיב לקובץ וידאו אמיתי MP4 -->
-              <video autoplay loop muted playsinline poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100%25' height='100%25' fill='%23E7E3DC'/%3E%3C/svg%3E">
-                <source src="" type="video/mp4">
-              </video>
-              <span style="position: relative; z-index: 1; font-weight: 700;">
-                <!-- TODO: להכניס סרטון חתונה קצר בלופ -->
-                [ תצוגת סרטון חתונה בלייב ]
-              </span>
-            </div>
-            <div class="image-caption" dir="rtl">
-              <span style="font-weight: 800; color: var(--accent);">01 — REAL TIME VIBE</span>
-              <span>רגעים מהרחבה והחופה בזמן אמת</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 1. Availability Form Section -->
-    <section id="availability" class="availability-section">
-      <div class="container">
-        <div class="section-header" style="text-align: center;">
-          <span class="eyebrow">בואו נבדוק זמינות לאירוע</span>
-          <h2 class="section-title">סגירת תאריך ובניית חבילה</h2>
-        </div>
-
-        <div class="form-wrapper">
-          <form id="leadForm" novalidate>
-            <!-- Honeypot Bot Protection -->
-            <div class="honeypot-field">
-              <label for="_gotcha">Don't fill this out</label>
-              <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="fullName">שם מלא *</label>
-                <input type="text" id="fullName" name="fullName" class="form-control" required placeholder="איך קוראים לך?">
-              </div>
-
-              <div class="form-group">
-                <label for="phone">מספר טלפון / וואטסאפ *</label>
-                <input type="tel" id="phone" name="phone" class="form-control" required placeholder="052-7953630">
-              </div>
-
-              <div class="form-group">
-                <label for="weddingDate">תאריך החתונה *</label>
-                <input type="date" id="weddingDate" name="weddingDate" class="form-control" required>
-              </div>
-
-              <div class="form-group">
-                <label for="location">מיקום האירוע (גן/אולם) *</label>
-                <input type="text" id="location" name="location" class="form-control" required placeholder="איפה מתחתנים?">
-              </div>
-
-              <div class="form-group full-width">
-                <label for="notes">נקודות קריטיות / דגשים שחשוב לי לדעת</label>
-                <textarea id="notes" name="notes" class="form-control" placeholder="בקשות מיוחדות, טרנדים שאהבת, או כל דבר שחשוב לך..."></textarea>
-              </div>
-            </div>
-
-            <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; padding: 1.1rem; font-size: 1.05rem; margin-top: 1.5rem;">
-              שליחת פרטים לבדיקת זמינות
-            </button>
-
-            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Packages Section -->
-    <section id="packages" class="dark-pulse">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-num">02</span>
-            <div class="section-line"></div>
-          </div>
-          <span class="eyebrow">החבילה המדויקת לכם</span>
-          <h2 class="section-title">חבילות תוכן ותמחור</h2>
-        </div>
-
-        <div class="packages-grid">
-          <!-- Package 1 -->
-          <div class="package-card">
-            <h3 class="package-name">חבילת בסיס</h3>
-            <div class="package-price-tag">פוקוס על הרגעים המרכזיים</div>
-            <ul class="package-features">
-              <li>צילום רציף משלב ההכנות ועד החופה</li>
-              <li>עד 3 סרטונים ערוכים ל-Reels / TikTok</li>
-              <li>העברת כל חומרי הגלם בדרייב מסודר</li>
-              <li>אספקת חומרים ערוכים תוך 24 שעות</li>
-            </ul>
-            <a href="#availability" class="btn btn-outline" style="color: var(--text-light); border-color: var(--border-dark);">לבדיקת זמינות</a>
-          </div>
-
-          <!-- Package 2 (Featured) -->
-          <div class="package-card featured">
-            <span class="featured-badge">הנמכרת ביותר</span>
-            <h3 class="package-name">חבילה מורחבת</h3>
-            <div class="package-price-tag">כיסוי סושיאל מלא לאירוע</div>
-            <ul class="package-features">
-              <li>צילום רציף מההכנות ועד לשיא הרחבה</li>
-              <li>עד 6 סרטונים ערוכים באנרגיה גבוהה</li>
-              <li>טרנדים מותאמים אישית שנבנו מראש</li>
-              <li>כל חומרי הגלם ללא הגבלה</li>
-              <li>אספקת סרטון ראשון עוד במהלך הלילה!</li>
-            </ul>
-            <a href="#availability" class="btn btn-primary" style="background-color: var(--accent-gold); color: #122219;">לבדיקת זמינות</a>
-          </div>
-
-          <!-- Package 3 -->
-          <div class="package-card">
-            <h3 class="package-name">חבילת פרימיום</h3>
-            <div class="package-price-tag">חווית LIVE היקפית מא' עד ת'</div>
-            <ul class="package-features">
-              <li>כיסוי מלא ללא הגבלת שעות באירוע</li>
-              <li>8-10 סרטונים ערוכים ומלוטשים</li>
-              <li>ניהול סושיאל בלייב מחשבון הכלה בזמן אמת</li>
-              <li>עריכת סרטון סיכום מרגש למחרת בבוקר</li>
-              <li>עדיפות מוחלטת בלוח הזמנים</li>
-            </ul>
-            <a href="#availability" class="btn btn-outline" style="color: var(--text-light); border-color: var(--border-dark);">לבדיקת זמינות</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Value Proposition -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-title-wrap">
-            <span class="section-num">03</span>
-            <div class="section-line"></div>
-          </div>
-          <span class="eyebrow">למה LICHT.MEDIA?</span>
-          <h2 class="section-title">איך הקסם קורה?</h2>
-        </div>
-
-        <div class="value-grid">
-          <div class="value-card">
-            <span class="eyebrow">01. תפוסה בלייב</span>
-            <h3>עיניים על הכל</h3>
-            <p>צילום מיומן ורציף משלב ההכנות, המפגש, קבלת הפנים, החופה ועד לשיא הרחבה – בלי לפספס אף מבט או חיוך.</p>
-          </div>
-          <div class="value-card">
-            <span class="eyebrow">02. עריכה מהירה</span>
-            <h3>תוכן מיידי לרשת</h3>
-            <p>האנרגיות והמהירות שלי בעריכה מבטיחות שתוכלי לשתף סרטוני Reels ו-TikTok קצביים עוד לפני שהאורחים התעוררו.</p>
-          </div>
-          <div class="value-card">
-            <span class="eyebrow">03. ראש שקט</span>
-            <h3>חוגגים בלי דאגות</h3>
-            <p>בלי לבקש מהמלוות והחברות לצלם בנייד. כולן מתרכזות בלשמוח איתך, ואני דואגת לכל התוכן האיכותי והזמין.</p>
-          </div>
-          <div class="value-card">
-            <span class="eyebrow">04. בול לטרנדים</span>
-            <h3>מותאם לפורמט</h3>
-            <p>זווית צילום אנכית (9:16), מעברים חדשניים וסאונדים חמים בטיקטוק ובאינסטגרם שיגרמו לכולם לדבר על החתונה.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        <strong dir="ltr" style="font-family: var(--font-heading); font-size: 1.1rem;">LICHT.MEDIA</strong> — ניהול סושיאל וסרטונים בלייב לכלות
-      </div>
-      <div class="footer-links">
-        <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://wa.me/972527953630" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="tel:0527953630">052-7953630</a>
-        <a href="mailto:neta225licht@gmail.com">מייל</a>
-      </div>
-    </div>
-    <div class="container colophon">
-      קובץ HTML אחד · ללא build · הטופס מחובר לאוטומציית n8n
-    </div>
-  </footer>
-
-  <script>
-    // Constants for Webhook Integration
-    const WEBHOOK_URL    = "PASTE_YOUR_N8N_PRODUCTION_URL_HERE"; // TODO: להדביק כאן את הלינק מ-n8n
-    const FALLBACK_EMAIL = "neta225licht@gmail.com";
-
-    document.getElementById('leadForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const statusDiv = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('submitBtn');
-
-      // Check Honeypot
-      const honeypot = document.getElementById('_gotcha').value;
-      if (honeypot) {
-        return; // Bot detected, silent reject
-      }
-
-      // Basic Validation
-      if (!form.checkValidity()) {
-        statusDiv.className = 'form-status error';
-        statusDiv.textContent = 'אנא מלאי את כל שדות החובה בטופס.';
-        return;
-      }
-
-      // Form Data Preparation
-      const formData = {
-        owner: "LICHT.MEDIA",
-        fullName: form.fullName.value,
-        phone: form.phone.value,
-        weddingDate: form.weddingDate.value,
-        location: form.location.value,
-        notes: form.notes.value,
-        page: window.location.href,
-        sent_at: new Date().toISOString()
-      };
-
-      // UI Loading State
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'שולח...';
-      statusDiv.className = 'form-status';
-      statusDiv.style.display = 'none';
-
-      try {
-        // Send to Webhook
-        const response = await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        });
-
-        if (response.ok || WEBHOOK_URL === "PASTE_YOUR_N8N_PRODUCTION_URL_HERE") {
-          // Success Response
-          statusDiv.className = 'form-status success';
-          statusDiv.textContent = 'איזה מרגש! בודקת זמינות לתאריך וחוזרת אלייך בווטסאפ בהקדם ✨';
-          form.reset();
-        } else {
-          throw new Error('Webhook error');
-        }
-      } catch (err) {
-        // Fallback to Mailto on Error
-        statusDiv.className = 'form-status error';
-        statusDiv.innerHTML = `אירעה שגיאה בשליחה. <a href="mailto:${FALLBACK_EMAIL}?subject=פנייה בדיקת זמינות - ${encodeURIComponent(formData.fullName)}&body=${encodeURIComponent('תאריך: ' + formData.weddingDate + '\nטלפון: ' + formData.phone + '\nמיקום: ' + formData.location + '\nהערות: ' + formData.notes)}" style="color: inherit; underline: always;">לחצי כאן לשליחת המייל בדרך חלופית</a>`;
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'שליחת פרטים לבדיקת זמינות';
-      }
-    });
-  </script>
 </body>
 </html>
